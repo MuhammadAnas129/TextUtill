@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 
 export default function Navbar(props) {
   return (
-    <div>
-      <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    //back ticks " ``` "are uses in templet litrels
+      <nav className={`navbar navbar-expand-lg bg-${props.mode} navbar-${props.mode}`}>
   <div className="container-fluid">
     <a className="navbar-brand" href="/">{props.title}</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,17 +33,26 @@ export default function Navbar(props) {
           {/* <a className="nav-link disabled" aria-disabled="true">Disabled</a> */}
         </li>
       </ul>
-      <form className="d-flex" role="search">
+      
+      <div className="form-check form-switch">
+  <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+  <label className={`form-check-label text-${props.mode==='light'?'dark':'light'}`} htmlFor="flexSwitchCheckDefault" >Enable Dark Mode</label>
+</div>
+
+      {/* <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button className="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> */}
+      
     </div>
   </div>
 </nav>
-      </>
-    </div>
+    
   )
 }
+
+  //${props.mode==='light'?'dark':'light'}`} ternory opperator
+
 //props ke types ka baraa ma batata han or agr us ka ilawa kise or typr like number ke form ma aya to console ma error show krta ha .isRequired error show kraga jab koe prop na aya 
 Navbar.prototype={title:PropTypes.isRequied,
     home: PropTypes.string
